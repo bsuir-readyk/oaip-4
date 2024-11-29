@@ -3,13 +3,13 @@ const
 type
   TIntegerArr = array of int64;
 
-procedure FillRand(var arr: TIntegerArr; len: Integer);
+procedure FillRand(var arr: TIntegerArr);
 var i: Integer;
 begin
   Randomize;
   Write('Полученный массив: ');
   i := 1;
-  while i <= len do
+  while i < length(arr) do
   begin
     arr[i] := random(100);
     Write(arr[i], ' ');
@@ -18,12 +18,12 @@ begin
   Writeln;
 end;
 
-procedure FillManual(var arr: TIntegerArr; len: Integer);
+procedure FillManual(var arr: TIntegerArr);
 var i: Integer;
 begin
   Writeln('Введите элементы');
   i := 1;
-  while i <= len do
+  while i < length(arr) do
   begin
     Write(i, ': ');
     Read(arr[i]);
@@ -49,8 +49,8 @@ begin
   SetLength(pArr, n + 1);
   SetLength(prevArr, n + 1);
 
-  FillRand(arr, n);
-  // FillManual(arr, n);
+  FillRand(arr);
+  // FillManual(arr);
 
   i := 2;
   while i <= n do
@@ -96,6 +96,7 @@ begin
     end;
     Dec(i);
   end;
+
   WriteLn('Число вычёркиваний: ', n - resLength);
   Write('Полученная последовательность: ');
 
