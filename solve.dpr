@@ -34,7 +34,7 @@ end;
 var
   arr, dArr, resArr: TIntegerArr;
   pArr, prevArr: TIntegerArr;
-  n, i, j, resLength, lastIndex, pos: Integer;
+  n, i, j, resLength, lastIndex, cur: Integer;
 begin
   n := 0;
   while n < 1 do
@@ -99,19 +99,19 @@ begin
     Dec(i);
   end;
 
-  WriteLn('Число вычёркиваний: ', n - resLength);
-  Write('Полученная последовательность: ');
+  WriteLn('Вычёркиваний: ', n - resLength);
+  Write('Итоговая последовательность: ');
 
-  pos := 0;
+  cur := 0;
   i := lastIndex;
   while i <> -1 do
   begin
-    resArr[pos] := arr[i];
-    pos := pos + 1;
+    resArr[cur] := arr[i];
+    cur := cur + 1;
     i := prevArr[i];
   end;
 
-  i := pos - 1;
+  i := cur - 1;
   while i >= 0 do
   begin
     Write(resArr[i], ' ');
